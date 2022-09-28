@@ -109,10 +109,10 @@ fragment nftPreview on NftItem {
 }
 """
 variables = {
-  "query": "{\"$and\":[{\"collectionAddress\":\"EQBpOQjo6uIpkH-GqJ1oObqVjyATQEJ1PnIrM_52f3nSE_rb\"}]}",
-  "attributes": "[[\"Elements\",[\"Diamond\",null,\"Common\",\"Rare\",\"Gold\"]],[\"Inner Body\",[\"Rare\"]],[\"Outer Body\",[\"Rare\",\"Gold\"]],[\"Type\",[\"G-Pistols\",\"G-Shotguns\"]]]",
+  "query": "{\"$and\":[{\"collectionAddress\":\"EQCvYf5W36a0zQrS_wc6PMKg6JnyTcFU56NPx1PrAW63qpvt\"}]}",
+  "attributes": None,
   "sort": "[{\"isOnSale\":{\"order\":\"desc\"}},{\"price\":{\"order\":\"asc\"}},{\"index\":{\"order\":\"asc\"}}]",
-  "count": 30
+  "count": 5
 }
 
 data = client.execute(query=query, variables=variables)
@@ -125,14 +125,17 @@ for i in edges:
     address = i['address']
     url = f'https://getgems.io/collection/{ownerAdress}/{address}'
     rarityAtrrs = i ['collection']['hasRarityAttributes']
-    #attrs = 
-    #print(rarityAtrrs)
-    print(name)
-    print(image)
-    print(ownerAdress)
-    print(address)
-    print(url)
+    price = 0
+    if 'sale' in i :
+      sale = i['sale']
+      if (sale is not None) and ('price' in sale) : price = i['sale']['fullPrice']
+      elif (sale is not None) and ('maxBid' in sale) :
+        maxBid = i['sale']['maxBid']
+        minBid = i['sale']['minBid']
+        price = maxBid if maxBid is not None else minBid
+    print(price)
     print('------------')
+    #break
 
 #G-Guns 
 #( 5 elements ) ( rare -> inner body ) ( rare , gold -> outter body ) ( g-shutgun , g-pistol -> type)
