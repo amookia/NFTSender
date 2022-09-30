@@ -15,3 +15,10 @@ MetaForest_Bunnies = {
   "sort": "[{\"index\":{\"order\":\"desc\"}}]",
   "count": count
 }
+#------------------------
+TON_Diamonds = {
+  "query": "{\"$and\":[{\"collectionAddress\":\"EQAG2BH0JlmFkbMrLEnyn2bIITaOSssd4WdisE4BdFMkZbir\"},{\"saleType\":\"fix_price\"}]}",
+  "attributes": "[[\"Shape\",[\"Diamond\",\"Heart\"]],[\"Size\",[\"Big\",\"Medium\",\"Small\"]]]",
+  "sort": "[{\"index\":{\"order\":\"desc\"}}]",
+  "count": count
+}

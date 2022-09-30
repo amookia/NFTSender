@@ -13,5 +13,7 @@ def sendToApi(var,c):
 if __name__ == '__main__':
     while True:
         Thread(sendToApi(vars.g_guns,'G-Guns')).start()
-        Thread(sendToApi(vars.MetaForest_Bunnies,'MetaForest_Bunnies'))
+        Thread(sendToApi(vars.MetaForest_Bunnies,'MetaForest_Bunnies')).start()
+        Thread(sendToApi(vars.TON_Diamonds,'TON Diamonds')).start()
+
         time.sleep(15)
