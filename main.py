@@ -14,4 +14,4 @@ if __name__ == '__main__':
     while True:
         Thread(sendToApi(vars.g_guns,'G-Guns')).start()
         Thread(sendToApi(vars.MetaForest_Bunnies,'MetaForest_Bunnies'))
-        time.sleep(5)
+        time.sleep(15)
