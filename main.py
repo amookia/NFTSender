@@ -13,4 +13,4 @@ def sendToApi(var,c):
 if __name__ == '__main__':
     while True:
         Thread(sendToApi(vars.g_guns,'G-Guns')).start()
-        time.sleep(2)
+        time.sleep(5)
