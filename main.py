@@ -1,11 +1,16 @@
-from flask import Flask
+from getgems import checker,vars
+import requests
+from threading import Thread
+import time
 
-app = Flask(__name__)
 
-
-from api.app import api
-app.register_blueprint(api)
-
+def sendToApi(var):
+    try:
+        requests.post('http://tomantoncoin.com/nft/connect.php',data=checker.nftSearch(var))
+    except Exception as e:
+        print(e)
 
 if __name__ == '__main__':
-    app.run(port=5000,debug=True)
+    while True:
+        Thread(sendToApi(vars.g_guns)).start()
+        time.sleep(2)
