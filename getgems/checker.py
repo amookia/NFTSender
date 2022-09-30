@@ -125,7 +125,7 @@ def nftSearch(variables : string,collectionName : string) -> dict :
         price = 0
         if 'sale' in i :
             sale = i['sale']
-            if (sale is not None) and ('price' in sale) : price = i['sale']['fullPrice']
+            if (sale is not None) and (('price' in sale) or 'fullPrice') : price = i['sale']['fullPrice']
             elif (sale is not None) and ('maxBid' in sale) :
                 maxBid = i['sale']['maxBid']
                 minBid = i['sale']['minBid']
