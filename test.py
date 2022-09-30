@@ -1,5 +1,5 @@
 from python_graphql_client import GraphqlClient
-
+from getgems import vars
 
 client = GraphqlClient(endpoint="https://api.getgems.io/graphql")
 
@@ -115,7 +115,7 @@ variables = {
   "count": 5
 }
 
-data = client.execute(query=query, variables=variables)
+data = client.execute(query=query, variables=vars.g_guns)
 edges = data['data']['alphaNftItemSearch']['edges']
 for i in edges:
     i = i['node']
