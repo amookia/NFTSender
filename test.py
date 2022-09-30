@@ -115,7 +115,7 @@ variables = {
   "count": 5
 }
 
-data = client.execute(query=query, variables=vars.g_guns)
+data = client.execute(query=query, variables=vars.MetaForest_Bunnies)
 edges = data['data']['alphaNftItemSearch']['edges']
 for i in edges:
     i = i['node']
@@ -128,14 +128,13 @@ for i in edges:
     price = 0
     if 'sale' in i :
       sale = i['sale']
-      if (sale is not None) and ('price' in sale) : price = i['sale']['fullPrice']
+      if (sale is not None) and (('price' in sale) or 'fullPrice') : price = i['sale']['fullPrice']
       elif (sale is not None) and ('maxBid' in sale) :
         maxBid = i['sale']['maxBid']
         minBid = i['sale']['minBid']
         price = maxBid if maxBid is not None else minBid
     print(price)
     print('------------')
-    #break
 
 #G-Guns 
 #( 5 elements ) ( rare -> inner body ) ( rare , gold -> outter body ) ( g-shutgun , g-pistol -> type)
