@@ -131,7 +131,7 @@ def nftSearch(variables : string,collectionName : string) -> dict :
                 minBid = i['sale']['minBid']
                 price = maxBid if maxBid is not None else minBid
         datas.append({'collectionName':collectionName,'name':name,'image':image,'ownerAddress':ownerAdress,
-        'address':address,'url':url,'price':5}) #change price later
+        'address':address,'url':url,'price':price}) #change price later
     return datas
 
 
