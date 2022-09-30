@@ -117,7 +117,7 @@ def nftSearch(variables : string,collectionName : string) -> dict :
     for i in edges:
         i = i['node']
         name = i['name']
-        image = i['previewImage']['image']['sized']
+        image = i['previewImage']['image']['sized'] if 'image' in i['previewImage'] else i['previewImage']['lottie']
         ownerAdress = i['ownerAddress']
         address = i['address']
         url = f'https://getgems.io/collection/{ownerAdress}/{address}'
