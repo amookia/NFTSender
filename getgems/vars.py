@@ -22,3 +22,17 @@ TON_Diamonds = {
   "sort": "[{\"index\":{\"order\":\"desc\"}}]",
   "count": count
 }
+#------------------------
+Tonlanders_Sheeps = {
+  "query": "{\"$and\":[{\"collectionAddress\":\"EQDi0t0R8yjV1Yu8lWHkDawz2xihHqsGB61-bQVf7EQ8SteO\"},{\"saleType\":\"fix_price\"}]}",
+  "attributes": "[[\"Rarity\",[\"Unique\",\"Rare\",\"Common\"]]]",
+  "sort": "[{\"index\":{\"order\":\"desc\"}}]",
+  "count": count
+}
+#------------------------
+Ton_Frogs = {
+  "query": "{\"$and\":[{\"collectionAddress\":\"EQDahyr_gPkHBPbhyrvjoHGVFGGj8vXXtL7w14AV3S2JvpTF\"},{\"saleType\":\"fix_price\"}]}",
+  "attributes": None,
+  "sort": "[{\"index\":{\"order\":\"desc\"}}]",
+  "count": count
+}
