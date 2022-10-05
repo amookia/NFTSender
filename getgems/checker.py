@@ -118,7 +118,7 @@ def nftSearch(variables : string,collectionName : string) -> dict :
         i = i['node']
         name = i['name']
         try:
-            image = i['previewImage']['image']['sized'] if 'image' in i['previewImage'] else i['previewImage']['lottie']
+            image = i['previewImage']['image']['sized'] if 'image' in i['previewImage'] else i['previewImage']['fallbackImage']['sized']
         except:
             image = None
         ownerAdress = i['ownerAddress']
