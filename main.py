@@ -4,9 +4,9 @@ from threading import Thread
 import time
 
 
-def sendToApi(var,c):
+def sendToApi(var,c,attr=''):
     try:
-        requests.post('http://ashams.tk/nftchannel/connect.php',json=checker.nftSearch(var,c))
+        requests.post('http://ashams.tk/nftchannel/connect.php',json=checker.nftSearch(var,c,attr))
     except Exception as e:
         print(e)
 
