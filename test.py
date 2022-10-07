@@ -2,5 +2,5 @@ from getgems import vars
 from getgems.checker import nftSearch
 
 
-x = nftSearch(vars.TON_Diamonds,"",attr="Diamonds")
+x = nftSearch(vars.Ton_Frogs,"",attr="")
 print(x)

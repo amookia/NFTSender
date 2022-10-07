@@ -120,7 +120,7 @@ def nftSearch(variables : string,collectionName : string , attr = '') -> dict :
         try:
             image = i['previewImage']['image']['sized'] if 'image' in i['previewImage'] else i['previewImage']['fallbackImage']['sized']
         except:
-            image = None
+            image = i['previewImage']['sized']
         ownerAdress = i['ownerAddress']
         address = i['address']
         url = f'https://getgems.io/collection/{ownerAdress}/{address}'
