@@ -3,7 +3,7 @@ from python_graphql_client import GraphqlClient
 
 
 
-def nftSearch(variables : string,collectionName : string , attr = '') -> dict :
+def nftSearch(variables : string,collectionName : string) -> dict :
     client = GraphqlClient(endpoint="https://api.getgems.io/graphql")
     # Create the query string and variables required for the request.
     query = """
@@ -74,13 +74,11 @@ def nftSearch(variables : string,collectionName : string , attr = '') -> dict :
         isVerified
         hasRarityAttributes
         isRarityEnabled
-        __typename
     }
     sale {
         ... on NftSaleFixPrice {
         fullPrice
         nftOwnerAddress
-        __typename
         }
         ... on NftSaleAuction {
         minBid
@@ -100,7 +98,6 @@ def nftSearch(variables : string,collectionName : string , attr = '') -> dict :
     attributes {
         traitType
         value
-        __typename
     }
     reactionCounters {
         likes
@@ -127,8 +124,7 @@ def nftSearch(variables : string,collectionName : string , attr = '') -> dict :
         rarityAtrrs = i ['collection']['hasRarityAttributes']
         price = 0
         attrs = None
-        if attr == 'Diamonds':
-            attrs = i['attributes']
+        attrs = i['attributes']
         if 'sale' in i :
             sale = i['sale']
             if (sale is not None) and (('price' in sale) or 'fullPrice') : price = i['sale']['fullPrice']

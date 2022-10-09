@@ -4,9 +4,9 @@ from threading import Thread
 import time
 
 
-def sendToApi(var,c,attr=''):
+def sendToApi(var,c):
     try:
-        requests.post('https://tomantoncoin.com/nft/connect.php',json=checker.nftSearch(var,c,attr))
+        requests.post('https://tomantoncoin.com/nft/connect.php',json=checker.nftSearch(var,c))
     except Exception as e:
         print(e)
 
