@@ -6,7 +6,7 @@ import time
 
 def sendToApi(var,c):
     try:
-        requests.post('http://ashams.tk/nftchannel/connect.php',json=checker.nftSearch(var,c))
+        requests.post('https://tomantoncoin.com/nft/connect.php',json=checker.nftSearch(var,c))
     except Exception as e:
         print(e)
 
