@@ -7,8 +7,8 @@ import time
 def sendToApi(var,c):
     try:
         requests.post('https://tomantoncoin.com/nft/connect.php',json=checker.nftSearch(var,c))
-    except Exception as e:
-        print(e)
+    except:
+        pass
 
 if __name__ == '__main__':
     while True:
