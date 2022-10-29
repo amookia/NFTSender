@@ -35,3 +35,11 @@ Ton_Frogs = {
   "sort": "[{\"index\":{\"order\":\"desc\"}}]",
   "count": count
 }
+
+
+testG = {
+  "query": "{\"$and\":[{\"collectionAddress\":\"EQBpOQjo6uIpkH-GqJ1oObqVjyATQEJ1PnIrM_52f3nSE_rb\"}]}",
+  "attributes": "[[\"Elements\",[null,\"Common\"]]]",
+  "sort": "[{\"isOnSale\":{\"order\":\"desc\"}},{\"price\":{\"order\":\"asc\"}},{\"index\":{\"order\":\"asc\"}}]",
+  "count": 1
+}

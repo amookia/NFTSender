@@ -127,19 +127,17 @@ def nftSearch(variables : string,collectionName : string) -> dict :
         attrs = i['attributes']
         if 'sale' in i :
             sale = i['sale']
-            try:
-                if (sale is not None) and (('price' in sale) or 'fullPrice') : price = i['sale']['fullPrice']
-                elif (sale is not None) and ('maxBid' in sale) :
-                    maxBid = i['sale']['maxBid']
-                    minBid = i['sale']['minBid']
-                    price = maxBid if maxBid is not None else minBid
-                if int(price) != 0 : price = int(price) / 1000000000
-            except:
-                pass
-        emoji = True
+
+            if (sale is not None) and (('price' in sale) or 'fullPrice') : price = i['sale']['fullPrice']
+            elif (sale is not None) and ('maxBid' in sale) :
+                maxBid = i['sale']['maxBid']
+                minBid = i['sale']['minBid']
+                price = maxBid if maxBid is not None else minBid
+            if int(price) != 0 : price = int(price) / 1000000000
+        emoji = False
         for val in attrs:
             if val['traitType'] == 'Elements':
-                emoji = False
+                emoji = True
         datas.append({'collectionName':collectionName,'emoji':emoji,'name':name,'image':image,'ownerAddress':ownerAdress,
         'address':address,'url':url,'price':price,'attributes':attrs}) #change price later
     return datas
