@@ -27,7 +27,7 @@ def TonFrogs():
 def CheckErr():
     r = requests.post('https://api.getgems.io/graphql')
     print(r.status_code)
-    if r.status_code == 502:
+    if (r.status_code == 502) or (r.status_code != 200):
         raise Exception('We are fucked!')
 
 if __name__ == '__main__':
