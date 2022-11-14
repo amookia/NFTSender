@@ -38,8 +38,6 @@ Ton_Frogs = {
 
 
 testG = {
-  "query": "{\"$and\":[{\"collectionAddress\":\"EQBpOQjo6uIpkH-GqJ1oObqVjyATQEJ1PnIrM_52f3nSE_rb\"}]}",
-  "attributes": "[[\"Elements\",[null,\"Common\"]]]",
-  "sort": "[{\"isOnSale\":{\"order\":\"desc\"}},{\"price\":{\"order\":\"asc\"}},{\"index\":{\"order\":\"asc\"}}]",
-  "count": 1
+  "collectionAddress": "EQAu3uEK8pxgAZ29QSYhRtDwmQpqJRbziH24gnud8BDGLRB6",
+  "count": 30
 }

@@ -18,19 +18,18 @@ def nftSearch(variables : string,collectionName : string) -> dict :
         edges {
         node {
             ...nftPreview
-            __typename
+            
         }
         cursor
-        __typename
+        
         }
         info {
         hasNextPage
-        __typename
+        
         }
-        __typename
+        
     }
     }
-
     fragment nftPreview on NftItem {
     name
     previewImage: content {
@@ -41,30 +40,30 @@ def nftSearch(variables : string,collectionName : string) -> dict :
             hasAnimation
             animation(width: 500, height: 500)
             preview(width: 250, height: 250)
-            __typename
+            
         }
-        __typename
+        
         }
         ... on NftContentLottie {
         lottie
         fallbackImage: image {
             sized(width: 500, height: 500)
-            __typename
+            
         }
-        __typename
+        
         }
         ... on NftContentVideo {
         baseUrl
         sized(width: 500, height: 500)
         preview(width: 250, height: 250)
-        __typename
+        
         }
-        __typename
+        
     }
     address
     owner {
         wallet
-        __typename
+        
     }
     ownerAddress
     collection {
@@ -86,14 +85,14 @@ def nftSearch(variables : string,collectionName : string) -> dict :
         lastBidAmount
         finishAt
         end
-        __typename
+        
         }
         ... on NftSaleFixPriceDisintar {
         fullPrice
         nftOwnerAddress
-        __typename
+        
         }
-        __typename
+        
     }
     attributes {
         traitType
@@ -101,15 +100,15 @@ def nftSearch(variables : string,collectionName : string) -> dict :
     }
     reactionCounters {
         likes
-        __typename
+        
     }
     rarityRank
-    __typename
+    
     }
     """
 
     data = client.execute(query=query, variables=variables)
-    edges = data['data']['alphaNftItemSearch']['edges']
+    edges = data['data']['historyCollectionNftItems']['items']
     datas = list()
     for i in edges:
         i = i['node']
@@ -143,3 +142,200 @@ def nftSearch(variables : string,collectionName : string) -> dict :
     return datas
 
 
+def getNftByAddress(address : str):
+  client = GraphqlClient(endpoint="https://api.getgems.io/graphql")
+  query = """
+  query getNftByAddress($address: String!) {
+  nft: alphaNftItemByAddress(address: $address) {
+    ...nftItem
+    snippet: content {
+      ... on NftContentImage {
+        image {
+          sized(width: 300, height: 300, format: "jpg")
+          
+        }
+        
+      }
+      ... on NftContentLottie {
+        lottie: image {
+          sized(width: 300, height: 300, format: "jpg")
+          
+        }
+        
+      }
+      ... on NftContentVideo {
+        video: preview(width: 300, height: 300)
+        
+      }
+      
+    }
+    
+  }
+}
+
+fragment nftItem on NftItem {
+  name
+  description
+  address
+  ownerAddress
+  kind
+  sale {
+    ... on NftSaleFixPrice {
+      address
+      fullPrice
+      marketplaceFee
+      marketplaceFeeAddress
+      nftOwnerAddress
+      royaltyAddress
+      royaltyAmount
+      
+    }
+    ... on NftSaleAuction {
+      address
+      nftOwnerAddress
+      marketplaceFeeAddress
+      marketplaceFeePercent
+      royaltyAddress
+      royaltyPercent
+      minBid
+      maxBid
+      minStep
+      minNextBid
+      end
+      finishAt
+      lastBidAmount
+      lastBidAddress
+      lastBidUser {
+        id
+        wallet
+        avatar
+        name
+        
+      }
+      lastBidAt
+      version
+      
+    }
+    ... on NftSaleFixPriceDisintar {
+      address
+      fullPrice
+      marketplaceFee
+      marketplaceFeeAddress
+      nftOwnerAddress
+      royaltyAddress
+      royaltyAmount
+      
+    }
+    ... on TelemintAuction {
+      telemintLastBidAmount: lastBidAmount
+      telemintLastBidAddress: lastBidAddress
+      telemintLastBidAt: lastBidAt
+      telemintFinishAt: finishAt
+      telemintNextBidAmount: nextBidAmount
+      telemintLastBidUser: lastBidUser {
+        name
+        wallet
+        avatar
+        
+      }
+      
+    }
+    
+  }
+  owner {
+    name
+    avatar
+    wallet
+    
+  }
+  index
+  metadataSourceType
+  content {
+    ... on NftContentImage {
+      image {
+        sized(width: 1000, height: 0)
+        baseUrl
+        hasAnimation
+        animation(width: 500, height: 500)
+        layout
+        
+      }
+      
+    }
+    ... on NftContentLottie {
+      lottie
+      fallbackImage: image {
+        sized(width: 1000, height: 0)
+        baseUrl
+        
+      }
+      
+    }
+    ... on NftContentVideo {
+      baseUrl
+      sized(width: 500, height: 500)
+      preview(width: 250, height: 250)
+      
+    }
+    
+  }
+  collection {
+    name
+    address
+    image {
+      image {
+        baseUrl
+        sized(width: 100, height: 100, format: "collection-avatar")
+        
+      }
+      
+    }
+    isVerified
+    isRarityValid
+    hasRarityAttributes
+    isRarityEnabled
+    approximateItemsCount
+    
+  }
+  attributes {
+    traitType
+    value
+    
+  }
+  reactionCounters {
+    likes
+    
+  }
+  isApproved
+  priority
+  isBlocked
+  rarityRank
+  rarityAttributes {
+    traitType
+    value
+    maxShapeCount
+    rarityPercent
+    
+  }
+  maxOffer {
+    offerAddress
+    fullPrice
+    finishAt
+    
+  }
+  isRevealable
+  
+}
+  """
+  varss = {"address": address}
+  data = client.execute(query=query, variables=varss)
+  nft = data['data']['nft']
+  name = nft['name']
+  address = nft['address']
+  ownerAddress = nft['ownerAddress']
+  price = nft['sale']['fullPrice']
+  image = nft['content']['image']['sized']
+  attributes = nft['attributes']
+  url = f'https://getgems.io/collection/{ownerAddress}/{address}'
+  datas = {'name':name,'emoji':'emoji','name':name,'image':image,'ownerAddress':ownerAddress,'address':address,'url':url,'price':price,'attributes':attributes}
+  print(datas)
