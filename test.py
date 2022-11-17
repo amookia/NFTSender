@@ -8,8 +8,8 @@ from getgems.history import historyCollectionNftItems
 from getgems.checker import getNftByAddress
 
 
-addresses = historyCollectionNftItems('EQBpOQjo6uIpkH-GqJ1oObqVjyATQEJ1PnIrM_52f3nSE_rb')
+addresses = historyCollectionNftItems('EQDahyr_gPkHBPbhyrvjoHGVFGGj8vXXtL7w14AV3S2JvpTF')
 for item in addresses:
     print(item)
-    getNftByAddress(item)
+    print(getNftByAddress(item))
     print('----------------')

@@ -1,7 +1,7 @@
 ### Todo
 
 - [x] G-Guns
-- [ ] MetaForest Bunnies
-- [ ] TON Diamonds
-- [ ] Tonlanders Sheeps
-- [ ] Ton Frogs
+- [x] MetaForest Bunnies
+- [x] TON Diamonds
+- [x] Tonlanders Sheeps
+- [x] Ton Frogs
