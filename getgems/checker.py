@@ -142,7 +142,7 @@ def nftSearch(variables : string,collectionName : string) -> dict :
     return datas
 
 
-def getNftByAddress(address : str):
+def getNftByAddress(address : str , collectionName : str):
   client = GraphqlClient(endpoint="https://api.getgems.io/graphql")
   query = """
   query getNftByAddress($address: String!) {
@@ -330,7 +330,7 @@ fragment nftItem on NftItem {
   varss = {"address": address}
   data = client.execute(query=query, variables=varss)
   nft = data['data']['nft']
-  name = nft['name']
+  name = collectionName #nft['name']
   address = nft['address']
   ownerAddress = nft['ownerAddress']
   price = nft['sale']['fullPrice'] if nft['sale'] is not None else None

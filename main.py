@@ -3,26 +3,33 @@ import requests
 from threading import Thread
 import schedule
 import time
-
-
+from getgems.history import historyCollectionNftItems
+from getgems.checker import getNftByAddress
 
 def GGuns():
-    r = requests.post('https://tomantoncoin.com/nft/connect.php',json=checker.nftSearch(vars.g_guns,'G-Guns'))
-
+  addresses = historyCollectionNftItems('EQBpOQjo6uIpkH-GqJ1oObqVjyATQEJ1PnIrM_52f3nSE_rb')
+  for item in addresses:
+    requests.post('https://tomantoncoin.com/nft/connect.php',json=(getNftByAddress(item,'G-Guns')))
 
 def MetaForest():
-    requests.post('https://tomantoncoin.com/nft/connect.php',json=checker.nftSearch(vars.MetaForest_Bunnies,'MetaForest_Bunnies'))
-
+    addresses = historyCollectionNftItems('EQAu3uEK8pxgAZ29QSYhRtDwmQpqJRbziH24gnud8BDGLRB6')
+    for item in addresses:
+        requests.post('https://tomantoncoin.com/nft/connect.php',json=(getNftByAddress(item,'MetaForest_Bunnies')))
 
 def TonDiamonds():
-    requests.post('https://tomantoncoin.com/nft/connect.php',json=checker.nftSearch(vars.TON_Diamonds,'TON Diamonds'))
+    addresses = historyCollectionNftItems('EQAG2BH0JlmFkbMrLEnyn2bIITaOSssd4WdisE4BdFMkZbir')
+    for item in addresses:
+        requests.post('https://tomantoncoin.com/nft/connect.php',json=(getNftByAddress(item,'TON Diamonds')))
 
 def Tonlanders():
-    requests.post('https://tomantoncoin.com/nft/connect.php',json=checker.nftSearch(vars.Tonlanders_Sheeps,'Tonlanders - Sheeps'))
-
+    addresses = historyCollectionNftItems('EQDi0t0R8yjV1Yu8lWHkDawz2xihHqsGB61-bQVf7EQ8SteO')
+    for item in addresses:
+        requests.post('https://tomantoncoin.com/nft/connect.php',json=(getNftByAddress(item,'Tonlanders - Sheeps')))
 
 def TonFrogs():
-    requests.post('https://tomantoncoin.com/nft/connect.php',json=checker.nftSearch(vars.Ton_Frogs,'Ton Frogs'))
+    addresses = historyCollectionNftItems('EQAu3uEK8pxgAZ29QSYhRtDwmQpqJRbziH24gnud8BDGLRB6')
+    for item in addresses:
+        requests.post('https://tomantoncoin.com/nft/connect.php',json=(getNftByAddress(item,'Ton Frogs')))
 
 def CheckErr():
     r = requests.post('https://api.getgems.io/graphql')
