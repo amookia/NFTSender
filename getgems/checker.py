@@ -340,6 +340,10 @@ fragment nftItem on NftItem {
   else:
     image = content['baseUrl']
   attributes = nft['attributes']
+  emoji = False
+  for val in attributes:
+    if val['traitType'] == 'Elements':
+        emoji = True
   url = f'https://getgems.io/collection/{ownerAddress}/{address}'
-  datas = {'name':name,'emoji':'emoji','name':name,'image':image,'ownerAddress':ownerAddress,'address':address,'url':url,'price':price,'attributes':attributes}
+  datas = {'name':name,'emoji':emoji,'name':name,'image':image,'ownerAddress':ownerAddress,'address':address,'url':url,'price':price,'attributes':attributes}
   return datas
