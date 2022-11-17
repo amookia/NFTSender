@@ -148,15 +148,16 @@ fragment userDataPreview on User {
     """
     varss = {
     "collectionAddress": collectionAddress,
-    "count": 5,
+    "count": 10,
     "types": [
     "PutUpForSale"
   ]
 }
     data = client.execute(query=query, variables=varss)
     items = data['data']['historyCollectionNftItems']['items']
-
+    datas = list()
     for item in items:
         address = item['address']
-        
+        datas.append(address)
+    return datas
         

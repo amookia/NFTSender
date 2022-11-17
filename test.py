@@ -1,13 +1,15 @@
 # from getgems import vars
-# from getgems.checker import nftSearch
+#from getgems.checker import nftSearch
 
 
 # x = nftSearch(vars.testG,"")
 # print(x)
-# from getgems.history import historyCollectionNftItems
-
-#historyCollectionNftItems('EQAKSz7abr10pttTEr9WvJoO-_xZjOeDvP5khQK51Y6IT1tB')
-
+from getgems.history import historyCollectionNftItems
 from getgems.checker import getNftByAddress
 
-getNftByAddress('EQAKSz7abr10pttTEr9WvJoO-_xZjOeDvP5khQK51Y6IT1tB')
+
+addresses = historyCollectionNftItems('EQBpOQjo6uIpkH-GqJ1oObqVjyATQEJ1PnIrM_52f3nSE_rb')
+for item in addresses:
+    print(item)
+    getNftByAddress(item)
+    print('----------------')

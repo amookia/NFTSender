@@ -333,9 +333,10 @@ fragment nftItem on NftItem {
   name = nft['name']
   address = nft['address']
   ownerAddress = nft['ownerAddress']
-  price = nft['sale']['fullPrice']
-  image = nft['content']['image']['sized']
+  price = nft['sale']['fullPrice'] if nft['sale'] is not None else None
+  content = nft['content']
+  image = content['fallbackImage']['baseUrl'] if 'fallbackImage' in content else content['image']['baseUrl']
   attributes = nft['attributes']
   url = f'https://getgems.io/collection/{ownerAddress}/{address}'
   datas = {'name':name,'emoji':'emoji','name':name,'image':image,'ownerAddress':ownerAddress,'address':address,'url':url,'price':price,'attributes':attributes}
-  print(datas)
+  return datas
