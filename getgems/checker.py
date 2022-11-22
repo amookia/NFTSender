@@ -330,7 +330,6 @@ fragment nftItem on NftItem {
   varss = {"address": address}
   data = client.execute(query=query, variables=varss)
   nft = data['data']['nft']
-  name = collectionName
   address = nft['address']
   ownerAddress = nft['ownerAddress']
   price = nft['sale']['fullPrice'] if nft['sale'] is not None else None
@@ -345,5 +344,5 @@ fragment nftItem on NftItem {
     if val['traitType'] == 'Elements':
         emoji = True
   url = f'https://getgems.io/collection/{ownerAddress}/{address}'
-  datas = {'collectionName':collectionName,'name':nft['name'],'emoji':emoji,'name':name,'image':image,'ownerAddress':ownerAddress,'address':address,'url':url,'price':price,'attributes':attributes}
+  datas = {'collectionName':collectionName,'name':nft['name'],'emoji':emoji,'image':image,'ownerAddress':ownerAddress,'address':address,'url':url,'price':price,'attributes':attributes}
   return datas
