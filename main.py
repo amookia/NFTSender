@@ -68,12 +68,12 @@ def CheckErr():
         raise Exception('We are fucked!')
 
 if __name__ == '__main__':
-    schedule.every(15).minutes.do(GGuns)
-    schedule.every(15).minutes.do(MetaForest)
-    schedule.every(15).minutes.do(TonDiamonds)
-    schedule.every(15).minutes.do(Tonlanders)
-    schedule.every(15).minutes.do(TonFrogs)
-    schedule.every(15).minutes.do(CheckErr)
+    schedule.every(5).minutes.do(GGuns)
+    schedule.every(5).minutes.do(MetaForest)
+    schedule.every(5).minutes.do(TonDiamonds)
+    schedule.every(5).minutes.do(Tonlanders)
+    schedule.every(5).minutes.do(TonFrogs)
+    schedule.every(5).minutes.do(CheckErr)
 
     while True:
         schedule.run_pending()
