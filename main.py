@@ -24,7 +24,7 @@ def MetaForest():
     for item in addresses:
         if count < 5:
             arr.append(getNftByAddress(item,'MetaForest_Bunnies'))
-    count +=1
+        count +=1
     requests.post('https://tomantoncoin.com/nft/connect.php',json=(arr))
     
 
@@ -35,7 +35,7 @@ def TonDiamonds():
     for item in addresses:
         if count < 5:
             arr.append(getNftByAddress(item,'TON Diamonds'))
-    count +=1
+        count +=1
     requests.post('https://tomantoncoin.com/nft/connect.php',json=(arr))
 
 
@@ -46,7 +46,7 @@ def Tonlanders():
     for item in addresses:
         if count < 5:
             arr.append(getNftByAddress(item,'Tonlanders - Sheeps'))
-    count +=1
+        count +=1
     requests.post('https://tomantoncoin.com/nft/connect.php',json=(arr))
    
 
@@ -57,7 +57,7 @@ def TonFrogs():
     for item in addresses:
         if count < 5:
             arr.append(getNftByAddress(item,'Ton Frogs'))
-    count +=1
+        count +=1
     requests.post('https://tomantoncoin.com/nft/connect.php',json=(arr))
 
 
