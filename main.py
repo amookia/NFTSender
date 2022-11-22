@@ -14,6 +14,7 @@ def GGuns():
         if count < 5:
             arr.append(getNftByAddress(item,'G-Guns'))
         count +=1
+    print(arr)
     requests.post('https://tomantoncoin.com/nft/connect.php',json=(arr))
   
 
