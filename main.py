@@ -13,6 +13,7 @@ def GGuns():
     for item in addresses:
         if count < 5:
             arr.append(getNftByAddress(item,'G-Guns'))
+            time.sleep(10)
         count +=1
     print(arr)
     requests.post('https://tomantoncoin.com/nft/connect.php',json=(arr))
@@ -25,6 +26,7 @@ def MetaForest():
     for item in addresses:
         if count < 5:
             arr.append(getNftByAddress(item,'MetaForest_Bunnies'))
+            time.sleep(10)
         count +=1
     requests.post('https://tomantoncoin.com/nft/connect.php',json=(arr))
     
@@ -36,6 +38,7 @@ def TonDiamonds():
     for item in addresses:
         if count < 5:
             arr.append(getNftByAddress(item,'TON Diamonds'))
+            time.sleep(10)
         count +=1
     requests.post('https://tomantoncoin.com/nft/connect.php',json=(arr))
 
@@ -47,6 +50,7 @@ def Tonlanders():
     for item in addresses:
         if count < 5:
             arr.append(getNftByAddress(item,'Tonlanders - Sheeps'))
+            time.sleep(10)
         count +=1
     requests.post('https://tomantoncoin.com/nft/connect.php',json=(arr))
    
@@ -58,6 +62,7 @@ def TonFrogs():
     for item in addresses:
         if count < 5:
             arr.append(getNftByAddress(item,'Ton Frogs'))
+            time.sleep(10)
         count +=1
     requests.post('https://tomantoncoin.com/nft/connect.php',json=(arr))
 
@@ -69,12 +74,12 @@ def CheckErr():
         raise Exception('We are fucked!')
 
 if __name__ == '__main__':
-    schedule.every(5).minutes.do(GGuns)
-    schedule.every(5).minutes.do(MetaForest)
-    schedule.every(5).minutes.do(TonDiamonds)
-    schedule.every(5).minutes.do(Tonlanders)
-    schedule.every(5).minutes.do(TonFrogs)
-    schedule.every(5).minutes.do(CheckErr)
+    schedule.every(8).minutes.do(GGuns)
+    schedule.every(8).minutes.do(MetaForest)
+    schedule.every(8).minutes.do(TonDiamonds)
+    schedule.every(8).minutes.do(Tonlanders)
+    schedule.every(8).minutes.do(TonFrogs)
+    schedule.every(3).minutes.do(CheckErr)
 
     while True:
         schedule.run_pending()
