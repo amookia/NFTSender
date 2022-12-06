@@ -20,7 +20,6 @@ def GGuns():
   
 
 def MetaForest():
-    print('m')
     arr = list()
     addresses = historyCollectionNftItems('EQAu3uEK8pxgAZ29QSYhRtDwmQpqJRbziH24gnud8BDGLRB6')
     items = nftSearch(vars.MetaForest_Bunnies,"")
@@ -78,12 +77,12 @@ def CheckErr():
 
 if __name__ == '__main__':
     MetaForest()
-    schedule.every(8).minutes.do(GGuns)
-    schedule.every(8).minutes.do(MetaForest)
-    schedule.every(8).minutes.do(TonDiamonds)
-    schedule.every(8).minutes.do(Tonlanders)
-    schedule.every(8).minutes.do(TonFrogs)
-    schedule.every(3).minutes.do(CheckErr)
+    schedule.every(10).minutes.do(GGuns)
+    schedule.every(12).minutes.do(MetaForest)
+    schedule.every(14).minutes.do(TonDiamonds)
+    schedule.every(16).minutes.do(Tonlanders)
+    schedule.every(18).minutes.do(TonFrogs)
+    schedule.every(10).minutes.do(CheckErr)
 
     while True:
         schedule.run_pending()
