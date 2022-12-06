@@ -108,7 +108,7 @@ def nftSearch(variables : string,collectionName : string) -> dict :
     """
 
     data = client.execute(query=query, variables=variables)
-    edges = data['data']['historyCollectionNftItems']['items']
+    edges = data['data']['alphaNftItemSearch']['edges']
     datas = list()
     for i in edges:
         i = i['node']

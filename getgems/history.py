@@ -148,7 +148,7 @@ fragment userDataPreview on User {
     """
     varss = {
     "collectionAddress": collectionAddress,
-    "count": 10,
+    "count": 40,
     "types": [
     "PutUpForSale"
   ]

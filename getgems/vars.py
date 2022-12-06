@@ -1,4 +1,4 @@
-count = 15
+count = 80
 
 g_guns = {
   "query": "{\"$and\":[{\"collectionAddress\":\"EQBpOQjo6uIpkH-GqJ1oObqVjyATQEJ1PnIrM_52f3nSE_rb\"},{\"saleType\":\"fix_price\"}]}",

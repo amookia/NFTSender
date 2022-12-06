@@ -5,65 +5,68 @@ import schedule
 import time
 from getgems.history import historyCollectionNftItems
 from getgems.checker import getNftByAddress
+from getgems.checker import nftSearch
 
 def GGuns():
+    arr = list()
     addresses = historyCollectionNftItems('EQBpOQjo6uIpkH-GqJ1oObqVjyATQEJ1PnIrM_52f3nSE_rb')
-    count = 0
-    arr = []
-    for item in addresses:
-        if count < 5:
-            arr.append(getNftByAddress(item,'G-Guns'))
-            time.sleep(10)
-        count +=1
-    print(arr)
+    items = nftSearch(vars.g_guns,"")
+    for item in items:
+        address = item['address']
+        if address in addresses:
+            arr.append(item)
+            print(address)
     requests.post('https://tomantoncoin.com/nft/connect.php',json=(arr))
   
 
 def MetaForest():
+    print('m')
+    arr = list()
     addresses = historyCollectionNftItems('EQAu3uEK8pxgAZ29QSYhRtDwmQpqJRbziH24gnud8BDGLRB6')
-    count = 0
-    arr = []
-    for item in addresses:
-        if count < 5:
-            arr.append(getNftByAddress(item,'MetaForest_Bunnies'))
-            time.sleep(10)
-        count +=1
+    items = nftSearch(vars.MetaForest_Bunnies,"")
+    for item in items:
+        address = item['address']
+        if address in addresses:
+            arr.append(item)
+            print(address)
     requests.post('https://tomantoncoin.com/nft/connect.php',json=(arr))
     
 
 def TonDiamonds():
+    arr = list()
     addresses = historyCollectionNftItems('EQAG2BH0JlmFkbMrLEnyn2bIITaOSssd4WdisE4BdFMkZbir')
-    count = 0
-    arr = []
-    for item in addresses:
-        if count < 5:
-            arr.append(getNftByAddress(item,'TON Diamonds'))
-            time.sleep(10)
-        count +=1
+    print(addresses)
+    items = nftSearch(vars.TON_Diamonds,"")
+    for item in items:
+        address = item['address']
+        if address in addresses:
+            arr.append(item)
+            print(address)
     requests.post('https://tomantoncoin.com/nft/connect.php',json=(arr))
 
 
 def Tonlanders():
+    arr = list()
     addresses = historyCollectionNftItems('EQDi0t0R8yjV1Yu8lWHkDawz2xihHqsGB61-bQVf7EQ8SteO')
-    count = 0
-    arr = []
-    for item in addresses:
-        if count < 5:
-            arr.append(getNftByAddress(item,'Tonlanders - Sheeps'))
-            time.sleep(10)
-        count +=1
+    print(addresses)
+    items = nftSearch(vars.Tonlanders_Sheeps,"")
+    for item in items:
+        address = item['address']
+        if address in addresses:
+            arr.append(item)
+            print(address)
     requests.post('https://tomantoncoin.com/nft/connect.php',json=(arr))
    
 
 def TonFrogs():
+    arr = list()
     addresses = historyCollectionNftItems('EQAu3uEK8pxgAZ29QSYhRtDwmQpqJRbziH24gnud8BDGLRB6')
-    count = 0
-    arr = []
-    for item in addresses:
-        if count < 5:
-            arr.append(getNftByAddress(item,'Ton Frogs'))
-            time.sleep(10)
-        count +=1
+    items = nftSearch(vars.Ton_Frogs,"")
+    for item in items:
+        address = item['address']
+        if address in addresses:
+            arr.append(item)
+            print(address)
     requests.post('https://tomantoncoin.com/nft/connect.php',json=(arr))
 
 
@@ -74,6 +77,7 @@ def CheckErr():
         raise Exception('We are fucked!')
 
 if __name__ == '__main__':
+    MetaForest()
     schedule.every(8).minutes.do(GGuns)
     schedule.every(8).minutes.do(MetaForest)
     schedule.every(8).minutes.do(TonDiamonds)
